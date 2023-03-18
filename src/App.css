@@ -28,5 +28,6 @@ body {
   align-items: center;
   background-color: var(--article-color);
   padding: 10px 20px;
+  justify-content: space-between;
 }
 
