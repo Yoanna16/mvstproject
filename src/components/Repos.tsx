@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { lazy, useEffect, useState } from 'react'
+import Card from './Card';
 
 function Repos() {
     const [items, setItems] = useState([]);
@@ -16,31 +17,35 @@ function Repos() {
     }, [user])
     return (
         <>
-        <div>
-        <div className="view">
-        <h1 className="title">
-          Viewing {user}'s repositories
-        </h1>
-        </div>
-        <section className='grid'>
-            {items.map((repo) => {
-                const { name, owner, git_url, id,  } = repo;
-                const { avatar_url, login } = owner
-                return (
-                    <article className='card'>
-                        <div className="profilePic">
-                            <img src={avatar_url} alt="" />
-                        </div>
-                        <p>{name}</p>
-                        <h1>{login}</h1>
-                    </article>
-                )
-            })}
+            <div className='repo-page'>
+                <div className="view">
+                    <h3 className="title">
+                        Viewing {user}'s repositories
+                    </h3>
+                </div>
+                <section className='grid'>
+                    {items.map((repo) => {
+                        const { name, owner, id, created_at, html_url,stargazers_count, watchers_count, language, open_issues } = repo;
+                        const { avatar_url, login } = owner
+                        return (
+                            <Card 
+                                key={id}
+                                avatar_url={avatar_url}
+                                login={login}
+                                name={name}
+                                created_at={created_at}
+                                html_url={html_url}
+                                stargazers_count={stargazers_count}
+                                watchers_count={watchers_count}
+                                language={language}
+                                open_issues={open_issues}                            />
+                        )
+                    })}
 
-        </section>
+                </section>
 
-        
-        </div>
+
+            </div>
         </>
     )
 }
