@@ -50,6 +50,7 @@ img {
 .grid .card {
   box-shadow: 0 10px 10px rgba(9, 17, 22, 0.5);
   padding: 20px 20px;
+  border-radius: 5px;
 }
 
 .card:hover {
@@ -97,6 +98,20 @@ img {
   background-color: var(--text-color);
   color: var(--dark-bg-color);
   padding: 5px;
+}
+
+/* Search Form */
+.form input {
+  background-color: var(--dark-bg-color);
+  padding: 12px;
+  font-family: inherit;
+  border: none;
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+.form input::placeholder {
+  color: var(--text-color);
 }
 
 @media (min-width: 640px) {
