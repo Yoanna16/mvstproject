@@ -12,7 +12,7 @@ function Repos() {
 
     useEffect(() => {
         const fetchRepos = async () => {
-            const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=6&sort=updated`);
+            const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=&sort=updated`);
             const data = await res.json();
             setRepos(data);
             console.log(data);

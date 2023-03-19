@@ -7,7 +7,7 @@ function Header() {
         <>
             <header className='header'>
                 <div>
-                    <h1>GitHub Repo&User Search</h1>
+                    <h1>GitHub Repositories Search</h1>
                 </div>
             </header>
         </>

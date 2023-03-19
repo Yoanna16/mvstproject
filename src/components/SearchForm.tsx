@@ -41,7 +41,7 @@ function SearchForm({
                 type='search'
                 name='search'
                 id='search'
-                placeholder='Search for user'
+                placeholder='Search for repository'
                 autoComplete='off'
                 onChange={(e) => searchRepo(e.target.value)}
             />
