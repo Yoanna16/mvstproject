@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-interface ICard {
+export interface ICard {
     key: string;
-    avatar_url: string;
+    avatar_url: string | 'https://media.istockphoto.com/id/1334433318/de/foto/big-sister-warning-little-brother-1988-im-garten.jpg?b=1&s=170667a&w=0&k=20&c=XTvWPLNlirfdkqVcqzVWgnjY9luYTQmkQ_AkidpI8FQ=';
     login: string;
     name: string;
     created_at: string;
@@ -14,21 +14,30 @@ interface ICard {
     open_issues: string;
 }
 
-function Card(props: ICard) {
-    const time = new Date(props.created_at).toLocaleString();
+function Card({key,
+    avatar_url,
+    login,
+    name,
+    created_at,
+    html_url,
+    stargazers_count,
+    watchers_count,
+    language,
+    open_issues}: ICard) {
+    const time = new Date(created_at).toLocaleString();
     return (
         <>
-        <Link to={ props.html_url} target="_blank" className='card-btn'>
+        <Link to={ html_url} target="_blank" className='card-btn'>
             <article className="card">
                 <div className="title-card">
                     <img
-                        src={props.avatar_url}
-                        alt={props.login}
+                        src={avatar_url}
+                        alt={login}
                         className="img"
                     />
                     <div>
-                        <h2 className="name">{props.login}</h2>
-                        <p className='project-name'>{props.name}</p>
+                        <h2 className="name">{login}</h2>
+                        <p className='project-name'>{name}</p>
                     </div>
                 </div>
 
@@ -40,16 +49,16 @@ function Card(props: ICard) {
                 </div>
 
                 <div className="links">
-                        <p>{props.stargazers_count.toLocaleString()} stars</p>
-                        <p>{props.watchers_count.toLocaleString()} Watchers</p>
-                        <p>{props.open_issues} issues</p>
+                        <p>{stargazers_count.toLocaleString()} stars</p>
+                        <p>{watchers_count.toLocaleString()} Watchers</p>
+                        <p>{open_issues} issues</p>
                 </div>
 
                 <div className="card-footer">
                     {
-                        props.language &&
+                        language &&
                         <p className="language">
-                        {props.language}
+                        {language}
                     </p>
                     }
                 </div>
