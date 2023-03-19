@@ -1,4 +1,4 @@
-import React, { SetStateAction, Dispatch, ChangeEvent } from 'react'
+import React, { SetStateAction, Dispatch } from 'react'
 
 interface ISearchForm {
     searchInput: string;

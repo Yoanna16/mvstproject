@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from './Card';
 import SearchForm from './SearchForm';
 
@@ -6,7 +6,7 @@ function Repos() {
     const [repos, setRepos] = useState([]);
     const [filtered, setFiltered] = useState([]);
     const [searchInput, setSearchInput] = useState('');
-    
+
     // Change this to any username whose repositories you want to get
     const [user] = useState('yoanna16');
 
