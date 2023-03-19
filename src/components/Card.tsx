@@ -14,7 +14,7 @@ export interface ICard {
     open_issues: string;
 }
 
-function Card({key,
+function Card({
     avatar_url,
     login,
     name,
