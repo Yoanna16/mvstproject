@@ -1,8 +1,12 @@
 import React, { lazy, useEffect, useState } from 'react'
 import Card from './Card';
+import SearchForm from './SearchForm';
 
 function Repos() {
-    const [items, setItems] = useState([]);
+    const [repos, setRepos] = useState([]);
+    const [filtered, setFiltered] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
+    
     // Change this to any username whose repositories you want to get
     const [user] = useState('yoanna16');
 
@@ -10,11 +14,13 @@ function Repos() {
         const fetchRepos = async () => {
             const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=6&sort=updated`);
             const data = await res.json();
-            setItems(data);
+            setRepos(data);
             console.log(data);
         }
         fetchRepos();
     }, [user])
+
+
     return (
         <>
             <div className='repo-page'>
@@ -22,28 +28,57 @@ function Repos() {
                     <h3 className="title">
                         Viewing {user}'s repositories
                     </h3>
+                    <SearchForm 
+                        searchInput={searchInput}
+                        setSearchInput={setSearchInput}
+                        setFiltered={setFiltered}
+                        repos={repos}
+                    />
                 </div>
-                <section className='grid'>
-                    {items.map((repo) => {
-                        const { name, owner, id, created_at, html_url,stargazers_count, watchers_count, language, open_issues } = repo;
-                        const { avatar_url, login } = owner
-                        return (
-                            <Card 
-                                key={id}
-                                avatar_url={avatar_url}
-                                login={login}
-                                name={name}
-                                created_at={created_at}
-                                html_url={html_url}
-                                stargazers_count={stargazers_count}
-                                watchers_count={watchers_count}
-                                language={language}
-                                open_issues={open_issues}                            />
-                        )
-                    })}
 
-                </section>
+                {searchInput.length > 1 ?
+                    (<section className='grid'>
+                        {filtered.map((repo) => {
+                            const { name, owner, id, created_at, html_url, stargazers_count, watchers_count, language, open_issues } = repo;
+                            const { avatar_url, login } = owner
+                            return (
+                                <Card
+                                    key={id}
+                                    avatar_url={avatar_url}
+                                    login={login}
+                                    name={name}
+                                    created_at={created_at}
+                                    html_url={html_url}
+                                    stargazers_count={stargazers_count}
+                                    watchers_count={watchers_count}
+                                    language={language}
+                                    open_issues={open_issues} />
+                            )
+                        })}
+                    </section>
 
+                    ) : (
+                        <section className='grid'>
+                            {repos.map((repo) => {
+                                const { name, owner, id, created_at, html_url, stargazers_count, watchers_count, language, open_issues } = repo;
+                                const { avatar_url, login } = owner
+                                return (
+                                    <Card
+                                        key={id}
+                                        avatar_url={avatar_url}
+                                        login={login}
+                                        name={name}
+                                        created_at={created_at}
+                                        html_url={html_url}
+                                        stargazers_count={stargazers_count}
+                                        watchers_count={watchers_count}
+                                        language={language}
+                                        open_issues={open_issues} />
+                                )
+                            })}
+                        </section>
+
+                    )}
 
             </div>
         </>
