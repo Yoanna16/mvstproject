@@ -1,6 +1,6 @@
 # GitHub Repositories With Search Functionality
 
-Search and view repositories via the Github API 
+Search and view repositories via the Github API.
 
 ## Running locally
 1. Clone the repository
@@ -14,6 +14,11 @@ Search and view repositories via the Github API
 The Github API has a fairly strict limit. When running the app locally you can export a personal access token and set up Using GitHub CLI in the command line. 
 More information here: 
 [Getting started using GitHub CLI](https://docs.github.com/en/rest/quickstart?apiVersion=2022-11-28&tool=cli)
+
+## TO DO
+- Write tests 
+- Implement user search functionality
+
 
 
 ## UI 
