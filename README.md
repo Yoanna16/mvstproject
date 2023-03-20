@@ -8,6 +8,7 @@ Search and view repositories via the Github API.
 3. Run the app in the development mode `npm start`
 4. Visit http://localhost:3001
 5. Start storybook `yarn start-storybook`
+6. Visit http://localhost:6006
 
 ## API Limit 
 
